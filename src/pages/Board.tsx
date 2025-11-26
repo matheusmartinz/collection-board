@@ -32,6 +32,115 @@ interface ResumoColecao {
 
 const API_URL = "https://eboard.service.bck.peon.tec.br/api/gestao-modelo";
 const REFRESH_INTERVAL = 60000; // 60 segundos
+const USE_MOCK_DATA = true; // Altere para false quando quiser usar a API real
+
+// Dados mockados para teste
+const MOCK_DATA: ColecaoData[] = [
+  {
+    colecao: { uuid: "1", codigo: "001", nome: "SALDO E BRINDES" },
+    numeroModelos: 15,
+    modelos: [
+      { codigo: "001", nome: "Modelo 1", status: "APROVADO" },
+      { codigo: "002", nome: "Modelo 2", status: "APROVADO" },
+      { codigo: "003", nome: "Modelo 3", status: "EM_DESENVOLVIMENTO" },
+      { codigo: "004", nome: "Modelo 4", status: "NAO_INICIADO" },
+      { codigo: "005", nome: "Modelo 5", status: "APROVADO" },
+      { codigo: "006", nome: "Modelo 6", status: "EM_DESENVOLVIMENTO" },
+      { codigo: "007", nome: "Modelo 7", status: "REPROVADO" },
+      { codigo: "008", nome: "Modelo 8", status: "APROVADO" },
+      { codigo: "009", nome: "Modelo 9", status: "NAO_INICIADO" },
+      { codigo: "010", nome: "Modelo 10", status: "APROVADO" },
+      { codigo: "011", nome: "Modelo 11", status: "CANCELADO" },
+      { codigo: "012", nome: "Modelo 12", status: "APROVADO" },
+    ],
+  },
+  {
+    colecao: { uuid: "2", codigo: "002", nome: "VERÃO 2025" },
+    numeroModelos: 20,
+    modelos: [
+      { codigo: "001", nome: "Modelo 1", status: "APROVADO" },
+      { codigo: "002", nome: "Modelo 2", status: "APROVADO" },
+      { codigo: "003", nome: "Modelo 3", status: "APROVADO" },
+      { codigo: "004", nome: "Modelo 4", status: "EM_DESENVOLVIMENTO" },
+      { codigo: "005", nome: "Modelo 5", status: "EM_DESENVOLVIMENTO" },
+      { codigo: "006", nome: "Modelo 6", status: "NAO_INICIADO" },
+      { codigo: "007", nome: "Modelo 7", status: "NAO_INICIADO" },
+      { codigo: "008", nome: "Modelo 8", status: "NAO_INICIADO" },
+      { codigo: "009", nome: "Modelo 9", status: "REPROVADO" },
+      { codigo: "010", nome: "Modelo 10", status: "APROVADO" },
+      { codigo: "011", nome: "Modelo 11", status: "APROVADO" },
+      { codigo: "012", nome: "Modelo 12", status: "APROVADO" },
+      { codigo: "013", nome: "Modelo 13", status: "EM_DESENVOLVIMENTO" },
+      { codigo: "014", nome: "Modelo 14", status: "APROVADO" },
+      { codigo: "015", nome: "Modelo 15", status: "APROVADO" },
+    ],
+  },
+  {
+    colecao: { uuid: "3", codigo: "003", nome: "INVERNO 2025" },
+    numeroModelos: 18,
+    modelos: [
+      { codigo: "001", nome: "Modelo 1", status: "EM_DESENVOLVIMENTO" },
+      { codigo: "002", nome: "Modelo 2", status: "EM_DESENVOLVIMENTO" },
+      { codigo: "003", nome: "Modelo 3", status: "EM_DESENVOLVIMENTO" },
+      { codigo: "004", nome: "Modelo 4", status: "NAO_INICIADO" },
+      { codigo: "005", nome: "Modelo 5", status: "NAO_INICIADO" },
+      { codigo: "006", nome: "Modelo 6", status: "NAO_INICIADO" },
+      { codigo: "007", nome: "Modelo 7", status: "NAO_INICIADO" },
+      { codigo: "008", nome: "Modelo 8", status: "NAO_INICIADO" },
+      { codigo: "009", nome: "Modelo 9", status: "APROVADO" },
+      { codigo: "010", nome: "Modelo 10", status: "APROVADO" },
+    ],
+  },
+  {
+    colecao: { uuid: "4", codigo: "004", nome: "PRIMAVERA 2025" },
+    numeroModelos: 12,
+    modelos: [
+      { codigo: "001", nome: "Modelo 1", status: "NAO_INICIADO" },
+      { codigo: "002", nome: "Modelo 2", status: "NAO_INICIADO" },
+      { codigo: "003", nome: "Modelo 3", status: "NAO_INICIADO" },
+      { codigo: "004", nome: "Modelo 4", status: "NAO_INICIADO" },
+      { codigo: "005", nome: "Modelo 5", status: "NAO_INICIADO" },
+      { codigo: "006", nome: "Modelo 6", status: "NAO_INICIADO" },
+    ],
+  },
+  {
+    colecao: { uuid: "5", codigo: "005", nome: "LINHA PREMIUM" },
+    numeroModelos: 8,
+    modelos: [
+      { codigo: "001", nome: "Modelo 1", status: "APROVADO" },
+      { codigo: "002", nome: "Modelo 2", status: "APROVADO" },
+      { codigo: "003", nome: "Modelo 3", status: "APROVADO" },
+      { codigo: "004", nome: "Modelo 4", status: "APROVADO" },
+      { codigo: "005", nome: "Modelo 5", status: "APROVADO" },
+      { codigo: "006", nome: "Modelo 6", status: "REPROVADO" },
+      { codigo: "007", nome: "Modelo 7", status: "EM_DESENVOLVIMENTO" },
+      { codigo: "008", nome: "Modelo 8", status: "EM_DESENVOLVIMENTO" },
+    ],
+  },
+  {
+    colecao: { uuid: "6", codigo: "006", nome: "OUTLET" },
+    numeroModelos: 25,
+    modelos: [
+      { codigo: "001", nome: "Modelo 1", status: "APROVADO" },
+      { codigo: "002", nome: "Modelo 2", status: "APROVADO" },
+      { codigo: "003", nome: "Modelo 3", status: "APROVADO" },
+      { codigo: "004", nome: "Modelo 4", status: "APROVADO" },
+      { codigo: "005", nome: "Modelo 5", status: "APROVADO" },
+      { codigo: "006", nome: "Modelo 6", status: "CANCELADO" },
+      { codigo: "007", nome: "Modelo 7", status: "CANCELADO" },
+      { codigo: "008", nome: "Modelo 8", status: "CANCELADO" },
+      { codigo: "009", nome: "Modelo 9", status: "APROVADO" },
+      { codigo: "010", nome: "Modelo 10", status: "APROVADO" },
+      { codigo: "011", nome: "Modelo 11", status: "APROVADO" },
+      { codigo: "012", nome: "Modelo 12", status: "REPROVADO" },
+      { codigo: "013", nome: "Modelo 13", status: "APROVADO" },
+      { codigo: "014", nome: "Modelo 14", status: "APROVADO" },
+      { codigo: "015", nome: "Modelo 15", status: "APROVADO" },
+      { codigo: "016", nome: "Modelo 16", status: "APROVADO" },
+      { codigo: "017", nome: "Modelo 17", status: "EM_DESENVOLVIMENTO" },
+    ],
+  },
+];
 
 const Board = () => {
   const [data, setData] = useState<ResumoColecao[]>([]);
@@ -42,13 +151,22 @@ const Board = () => {
   const fetchData = async () => {
     try {
       setError(null);
-      const response = await fetch(API_URL);
       
-      if (!response.ok) {
-        throw new Error(`Erro na API: ${response.status}`);
+      let apiData: ColecaoData[];
+      
+      if (USE_MOCK_DATA) {
+        // Simular delay de rede
+        await new Promise(resolve => setTimeout(resolve, 500));
+        apiData = MOCK_DATA;
+      } else {
+        const response = await fetch(API_URL);
+        
+        if (!response.ok) {
+          throw new Error(`Erro na API: ${response.status}`);
+        }
+        
+        apiData = await response.json();
       }
-
-      const apiData: ColecaoData[] = await response.json();
       
       // Transformar dados em formato de resumo
       const resumo: ResumoColecao[] = apiData.map((item) => {
