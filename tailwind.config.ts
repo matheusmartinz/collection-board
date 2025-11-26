@@ -63,6 +63,7 @@ export default {
           "row-even": "hsl(var(--tv-row-even))",
           "row-odd": "hsl(var(--tv-row-odd))",
           text: "hsl(var(--tv-text))",
+          "text-header": "hsl(var(--tv-text-header))",
           "text-muted": "hsl(var(--tv-text-muted))",
         },
         status: {

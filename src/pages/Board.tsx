@@ -249,82 +249,80 @@ const Board = () => {
   }
 
   return (
-    <div className="min-h-screen bg-tv-background p-8">
-      <div className="max-w-[95vw] mx-auto">
-        <div className="mb-8 flex justify-between items-center">
-          <h1 className="text-5xl font-bold text-tv-text">Andamento das Coleções</h1>
-          {lastUpdate && (
-            <p className="text-tv-text-muted text-2xl">
-              Última atualização: {lastUpdate.toLocaleTimeString("pt-BR")}
-            </p>
-          )}
-        </div>
+    <div className="min-h-screen bg-tv-background px-6 py-4">
+      <div className="mb-6 flex justify-between items-center">
+        <h1 className="text-4xl font-bold text-tv-text">Andamento das Coleções</h1>
+        {lastUpdate && (
+          <p className="text-tv-text-muted text-xl">
+            Última atualização: {lastUpdate.toLocaleTimeString("pt-BR")}
+          </p>
+        )}
+      </div>
 
-        <div className="overflow-x-auto">
-          <table className="w-full border-collapse">
-            <thead>
-              <tr className="bg-tv-header">
-                <th className="text-tv-text text-left py-6 px-8 text-3xl font-semibold border-b-2 border-tv-text/20">
-                  Coleção
-                </th>
-                <th className="text-tv-text text-center py-6 px-8 text-3xl font-semibold border-b-2 border-tv-text/20">
-                  Previsto
-                </th>
-                <th className="text-tv-text text-center py-6 px-8 text-3xl font-semibold border-b-2 border-tv-text/20">
-                  Criados
-                </th>
-                <th className="text-status-not-started text-center py-6 px-8 text-3xl font-semibold border-b-2 border-tv-text/20">
-                  Não iniciado
-                </th>
-                <th className="text-status-in-progress text-center py-6 px-8 text-3xl font-semibold border-b-2 border-tv-text/20">
-                  Em desenvolvimento
-                </th>
-                <th className="text-status-approved text-center py-6 px-8 text-3xl font-semibold border-b-2 border-tv-text/20">
-                  Aprovado
-                </th>
-                <th className="text-status-rejected text-center py-6 px-8 text-3xl font-semibold border-b-2 border-tv-text/20">
-                  Reprovado
-                </th>
-                <th className="text-status-cancelled text-center py-6 px-8 text-3xl font-semibold border-b-2 border-tv-text/20">
-                  Cancelado
-                </th>
+      <div className="w-full">
+        <table className="w-full border-collapse" style={{ fontFamily: 'Arial, Roboto, sans-serif' }}>
+          <thead>
+            <tr className="bg-tv-header">
+              <th className="text-tv-text-header text-left py-[18px] px-6 text-[32px] font-semibold border-b border-tv-text-header/10" style={{ width: '18%' }}>
+                Coleção
+              </th>
+              <th className="text-tv-text-header text-center py-[18px] px-6 text-[32px] font-semibold border-b border-tv-text-header/10" style={{ width: '10%' }}>
+                Previsto
+              </th>
+              <th className="text-tv-text-header text-center py-[18px] px-6 text-[32px] font-semibold border-b border-tv-text-header/10" style={{ width: '10%' }}>
+                Criados
+              </th>
+              <th className="text-tv-text-header text-center py-[18px] px-6 text-[32px] font-semibold border-b border-tv-text-header/10" style={{ width: '12%' }}>
+                Não iniciado
+              </th>
+              <th className="text-tv-text-header text-center py-[18px] px-6 text-[32px] font-semibold border-b border-tv-text-header/10" style={{ width: '15%' }}>
+                Em desenvolvimento
+              </th>
+              <th className="text-tv-text-header text-center py-[18px] px-6 text-[32px] font-semibold border-b border-tv-text-header/10" style={{ width: '12%' }}>
+                Aprovado
+              </th>
+              <th className="text-tv-text-header text-center py-[18px] px-6 text-[32px] font-semibold border-b border-tv-text-header/10" style={{ width: '12%' }}>
+                Reprovado
+              </th>
+              <th className="text-tv-text-header text-center py-[18px] px-6 text-[32px] font-semibold border-b border-tv-text-header/10" style={{ width: '11%' }}>
+                Cancelado
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((row, index) => (
+              <tr
+                key={row.nome}
+                className={index % 2 === 0 ? "bg-tv-row-even" : "bg-tv-row-odd"}
+              >
+                <td className="text-tv-text py-[18px] px-6 text-[28px] font-semibold border-b border-tv-text/10">
+                  {row.nome}
+                </td>
+                <td className="text-tv-text text-center py-[18px] px-6 text-[28px] font-semibold border-b border-tv-text/10">
+                  {row.previsto}
+                </td>
+                <td className="text-tv-text text-center py-[18px] px-6 text-[28px] font-semibold border-b border-tv-text/10">
+                  {row.criados}
+                </td>
+                <td className="text-status-not-started text-center py-[18px] px-6 text-[28px] font-bold border-b border-tv-text/10">
+                  {row.naoIniciado}
+                </td>
+                <td className="text-status-in-progress text-center py-[18px] px-6 text-[28px] font-bold border-b border-tv-text/10">
+                  {row.emDesenvolvimento}
+                </td>
+                <td className="text-status-approved text-center py-[18px] px-6 text-[28px] font-bold border-b border-tv-text/10">
+                  {row.aprovado}
+                </td>
+                <td className="text-status-rejected text-center py-[18px] px-6 text-[28px] font-bold border-b border-tv-text/10">
+                  {row.reprovado}
+                </td>
+                <td className="text-status-cancelled text-center py-[18px] px-6 text-[28px] font-bold border-b border-tv-text/10">
+                  {row.cancelado}
+                </td>
               </tr>
-            </thead>
-            <tbody>
-              {data.map((row, index) => (
-                <tr
-                  key={row.nome}
-                  className={index % 2 === 0 ? "bg-tv-row-even" : "bg-tv-row-odd"}
-                >
-                  <td className="text-tv-text py-5 px-8 text-2xl border-b border-tv-text/10">
-                    {row.nome}
-                  </td>
-                  <td className="text-tv-text text-center py-5 px-8 text-2xl font-semibold border-b border-tv-text/10">
-                    {row.previsto}
-                  </td>
-                  <td className="text-tv-text text-center py-5 px-8 text-2xl font-semibold border-b border-tv-text/10">
-                    {row.criados}
-                  </td>
-                  <td className="text-status-not-started text-center py-5 px-8 text-2xl font-bold border-b border-tv-text/10">
-                    {row.naoIniciado}
-                  </td>
-                  <td className="text-status-in-progress text-center py-5 px-8 text-2xl font-bold border-b border-tv-text/10">
-                    {row.emDesenvolvimento}
-                  </td>
-                  <td className="text-status-approved text-center py-5 px-8 text-2xl font-bold border-b border-tv-text/10">
-                    {row.aprovado}
-                  </td>
-                  <td className="text-status-rejected text-center py-5 px-8 text-2xl font-bold border-b border-tv-text/10">
-                    {row.reprovado}
-                  </td>
-                  <td className="text-status-cancelled text-center py-5 px-8 text-2xl font-bold border-b border-tv-text/10">
-                    {row.cancelado}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );
