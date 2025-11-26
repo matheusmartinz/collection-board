@@ -57,6 +57,21 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        tv: {
+          background: "hsl(var(--tv-background))",
+          header: "hsl(var(--tv-header))",
+          "row-even": "hsl(var(--tv-row-even))",
+          "row-odd": "hsl(var(--tv-row-odd))",
+          text: "hsl(var(--tv-text))",
+          "text-muted": "hsl(var(--tv-text-muted))",
+        },
+        status: {
+          "not-started": "hsl(var(--status-not-started))",
+          "in-progress": "hsl(var(--status-in-progress))",
+          approved: "hsl(var(--status-approved))",
+          rejected: "hsl(var(--status-rejected))",
+          cancelled: "hsl(var(--status-cancelled))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
