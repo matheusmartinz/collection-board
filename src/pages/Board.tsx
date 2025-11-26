@@ -249,74 +249,73 @@ const Board = () => {
   }
 
   return (
-    <div className="min-h-screen bg-tv-background px-6 py-4">
-      <div className="mb-6 flex justify-between items-center">
-        <h1 className="text-4xl font-bold text-tv-text">Andamento das Coleções</h1>
-        {lastUpdate && (
-          <p className="text-tv-text-muted text-xl">
-            Última atualização: {lastUpdate.toLocaleTimeString("pt-BR")}
-          </p>
-        )}
-      </div>
+    <div className="min-h-screen bg-tv-background">
+      {/* Header fixo */}
+      <header className="bg-peon-dark-green px-8 py-6 flex items-center">
+        <div className="flex items-center gap-6 w-full">
+          <div className="text-peon-white text-2xl font-bold">LOGO</div>
+          <h1 className="text-peon-white text-4xl font-bold flex-1 text-center">
+            Andamento das Coleções
+          </h1>
+        </div>
+      </header>
 
-      <div className="w-full">
-        <table className="w-full border-collapse" style={{ fontFamily: 'Arial, Roboto, sans-serif' }}>
+      {/* Tabela estilo Dash */}
+      <div className="w-full" style={{ maxHeight: '1280px', overflowX: 'auto', overflowY: 'auto' }}>
+        <table className="w-full border-collapse" style={{ fontFamily: 'Arial' }}>
           <thead>
-            <tr className="bg-tv-header">
-              <th className="text-tv-text-header text-left py-[18px] px-6 text-[32px] font-semibold border-b border-tv-text-header/10" style={{ width: '18%' }}>
+            <tr style={{ backgroundColor: '#263c2b' }}>
+              <th className="text-white font-bold text-center py-2 px-1 text-base" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap' }}>
                 Coleção
               </th>
-              <th className="text-tv-text-header text-center py-[18px] px-6 text-[32px] font-semibold border-b border-tv-text-header/10" style={{ width: '10%' }}>
+              <th className="text-white font-bold text-center py-2 px-1 text-base" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap' }}>
                 Previsto
               </th>
-              <th className="text-tv-text-header text-center py-[18px] px-6 text-[32px] font-semibold border-b border-tv-text-header/10" style={{ width: '10%' }}>
+              <th className="text-white font-bold text-center py-2 px-1 text-base" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap' }}>
                 Criados
               </th>
-              <th className="text-tv-text-header text-center py-[18px] px-6 text-[32px] font-semibold border-b border-tv-text-header/10" style={{ width: '12%' }}>
+              <th className="text-white font-bold text-center py-2 px-1 text-base" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap' }}>
                 Não iniciado
               </th>
-              <th className="text-tv-text-header text-center py-[18px] px-6 text-[32px] font-semibold border-b border-tv-text-header/10" style={{ width: '15%' }}>
+              <th className="text-white font-bold text-center py-2 px-1 text-base" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap' }}>
                 Em desenvolvimento
               </th>
-              <th className="text-tv-text-header text-center py-[18px] px-6 text-[32px] font-semibold border-b border-tv-text-header/10" style={{ width: '12%' }}>
+              <th className="text-white font-bold text-center py-2 px-1 text-base" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap' }}>
                 Aprovado
               </th>
-              <th className="text-tv-text-header text-center py-[18px] px-6 text-[32px] font-semibold border-b border-tv-text-header/10" style={{ width: '12%' }}>
+              <th className="text-white font-bold text-center py-2 px-1 text-base" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap' }}>
                 Reprovado
               </th>
-              <th className="text-tv-text-header text-center py-[18px] px-6 text-[32px] font-semibold border-b border-tv-text-header/10" style={{ width: '11%' }}>
+              <th className="text-white font-bold text-center py-2 px-1 text-base" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap' }}>
                 Cancelado
               </th>
             </tr>
           </thead>
-          <tbody>
+          <tbody style={{ backgroundColor: '#FAFBFA' }}>
             {data.map((row, index) => (
-              <tr
-                key={row.nome}
-                className={index % 2 === 0 ? "bg-tv-row-even" : "bg-tv-row-odd"}
-              >
-                <td className="text-tv-text py-[18px] px-6 text-[28px] font-semibold border-b border-tv-text/10">
+              <tr key={row.nome}>
+                <td className="text-tv-text text-center py-1 px-1" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap', textOverflow: 'ellipsis', fontFamily: 'Arial' }}>
                   {row.nome}
                 </td>
-                <td className="text-tv-text text-center py-[18px] px-6 text-[28px] font-semibold border-b border-tv-text/10">
+                <td className="text-tv-text text-center py-1 px-1" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap', textOverflow: 'ellipsis', fontFamily: 'Arial' }}>
                   {row.previsto}
                 </td>
-                <td className="text-tv-text text-center py-[18px] px-6 text-[28px] font-semibold border-b border-tv-text/10">
+                <td className="text-tv-text text-center py-1 px-1" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap', textOverflow: 'ellipsis', fontFamily: 'Arial' }}>
                   {row.criados}
                 </td>
-                <td className="text-status-not-started text-center py-[18px] px-6 text-[28px] font-bold border-b border-tv-text/10">
+                <td className="text-status-not-started text-center py-1 px-1 font-bold" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap', textOverflow: 'ellipsis', fontFamily: 'Arial' }}>
                   {row.naoIniciado}
                 </td>
-                <td className="text-status-in-progress text-center py-[18px] px-6 text-[28px] font-bold border-b border-tv-text/10">
+                <td className="text-status-in-progress text-center py-1 px-1 font-bold" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap', textOverflow: 'ellipsis', fontFamily: 'Arial' }}>
                   {row.emDesenvolvimento}
                 </td>
-                <td className="text-status-approved text-center py-[18px] px-6 text-[28px] font-bold border-b border-tv-text/10">
+                <td className="text-status-approved text-center py-1 px-1 font-bold" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap', textOverflow: 'ellipsis', fontFamily: 'Arial' }}>
                   {row.aprovado}
                 </td>
-                <td className="text-status-rejected text-center py-[18px] px-6 text-[28px] font-bold border-b border-tv-text/10">
+                <td className="text-status-rejected text-center py-1 px-1 font-bold" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap', textOverflow: 'ellipsis', fontFamily: 'Arial' }}>
                   {row.reprovado}
                 </td>
-                <td className="text-status-cancelled text-center py-[18px] px-6 text-[28px] font-bold border-b border-tv-text/10">
+                <td className="text-status-cancelled text-center py-1 px-1 font-bold" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap', textOverflow: 'ellipsis', fontFamily: 'Arial' }}>
                   {row.cancelado}
                 </td>
               </tr>
@@ -324,6 +323,15 @@ const Board = () => {
           </tbody>
         </table>
       </div>
+
+      {/* Última atualização */}
+      {lastUpdate && (
+        <div className="text-center py-4">
+          <p className="text-tv-text-muted text-sm">
+            Última atualização: {lastUpdate.toLocaleTimeString("pt-BR")}
+          </p>
+        </div>
+      )}
     </div>
   );
 };
