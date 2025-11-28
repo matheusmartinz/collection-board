@@ -292,66 +292,34 @@ const Board = () => {
             </tr>
           </thead>
           <tbody style={{ backgroundColor: '#FAFBFA' }}>
-            {data.map((row, index) => {
-              const pct = (v: number) =>
-                row.previsto > 0 ? ((v / row.previsto) * 100).toFixed(2) + "%" : "0.00%";
-              
-              return (
-                <>
-                  <tr key={row.nome}>
-                    <td className="text-tv-text text-center py-1 px-1" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap', textOverflow: 'ellipsis', fontFamily: 'Arial' }}>
-                      {row.nome}
-                    </td>
-                    <td className="text-tv-text text-center py-1 px-1" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap', textOverflow: 'ellipsis', fontFamily: 'Arial' }}>
-                      {row.previsto}
-                    </td>
-                    <td className="text-tv-text text-center py-1 px-1" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap', textOverflow: 'ellipsis', fontFamily: 'Arial' }}>
-                      {row.criados}
-                    </td>
-                    <td className="text-status-not-started text-center py-1 px-1 font-bold" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap', textOverflow: 'ellipsis', fontFamily: 'Arial' }}>
-                      {row.naoIniciado}
-                    </td>
-                    <td className="text-status-in-progress text-center py-1 px-1 font-bold" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap', textOverflow: 'ellipsis', fontFamily: 'Arial' }}>
-                      {row.emDesenvolvimento}
-                    </td>
-                    <td className="text-status-approved text-center py-1 px-1 font-bold" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap', textOverflow: 'ellipsis', fontFamily: 'Arial' }}>
-                      {row.aprovado}
-                    </td>
-                    <td className="text-status-rejected text-center py-1 px-1 font-bold" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap', textOverflow: 'ellipsis', fontFamily: 'Arial' }}>
-                      {row.reprovado}
-                    </td>
-                    <td className="text-status-cancelled text-center py-1 px-1 font-bold" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap', textOverflow: 'ellipsis', fontFamily: 'Arial' }}>
-                      {row.cancelado}
-                    </td>
-                  </tr>
-                  <tr key={`${row.nome}-pct`}>
-                    <td style={{ border: '1px solid #ccc', whiteSpace: 'nowrap', textOverflow: 'ellipsis', fontFamily: 'Arial', fontSize: '12px', padding: '0px 4px', height: '18px', lineHeight: '18px', textAlign: 'center', opacity: 0.75, backgroundColor: '#ffffff' }}>
-                    </td>
-                    <td style={{ border: '1px solid #ccc', whiteSpace: 'nowrap', textOverflow: 'ellipsis', fontFamily: 'Arial', fontSize: '12px', padding: '0px 4px', height: '18px', lineHeight: '18px', textAlign: 'center', opacity: 0.75, backgroundColor: '#ffffff' }}>
-                      100%
-                    </td>
-                    <td style={{ border: '1px solid #ccc', whiteSpace: 'nowrap', textOverflow: 'ellipsis', fontFamily: 'Arial', fontSize: '12px', padding: '0px 4px', height: '18px', lineHeight: '18px', textAlign: 'center', opacity: 0.75, backgroundColor: '#ffffff' }}>
-                      {pct(row.criados)}
-                    </td>
-                    <td className="text-status-not-started" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap', textOverflow: 'ellipsis', fontFamily: 'Arial', fontSize: '12px', padding: '0px 4px', height: '18px', lineHeight: '18px', textAlign: 'center', opacity: 0.75, backgroundColor: '#ffffff' }}>
-                      {pct(row.naoIniciado)}
-                    </td>
-                    <td className="text-status-in-progress" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap', textOverflow: 'ellipsis', fontFamily: 'Arial', fontSize: '12px', padding: '0px 4px', height: '18px', lineHeight: '18px', textAlign: 'center', opacity: 0.75, backgroundColor: '#ffffff' }}>
-                      {pct(row.emDesenvolvimento)}
-                    </td>
-                    <td className="text-status-approved" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap', textOverflow: 'ellipsis', fontFamily: 'Arial', fontSize: '12px', padding: '0px 4px', height: '18px', lineHeight: '18px', textAlign: 'center', opacity: 0.75, backgroundColor: '#ffffff' }}>
-                      {pct(row.aprovado)}
-                    </td>
-                    <td className="text-status-rejected" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap', textOverflow: 'ellipsis', fontFamily: 'Arial', fontSize: '12px', padding: '0px 4px', height: '18px', lineHeight: '18px', textAlign: 'center', opacity: 0.75, backgroundColor: '#ffffff' }}>
-                      {pct(row.reprovado)}
-                    </td>
-                    <td className="text-status-cancelled" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap', textOverflow: 'ellipsis', fontFamily: 'Arial', fontSize: '12px', padding: '0px 4px', height: '18px', lineHeight: '18px', textAlign: 'center', opacity: 0.75, backgroundColor: '#ffffff' }}>
-                      {pct(row.cancelado)}
-                    </td>
-                  </tr>
-                </>
-              );
-            })}
+            {data.map((row, index) => (
+              <tr key={row.nome}>
+                <td className="text-tv-text text-center py-1 px-1" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap', textOverflow: 'ellipsis', fontFamily: 'Arial' }}>
+                  {row.nome}
+                </td>
+                <td className="text-tv-text text-center py-1 px-1" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap', textOverflow: 'ellipsis', fontFamily: 'Arial' }}>
+                  {row.previsto}
+                </td>
+                <td className="text-tv-text text-center py-1 px-1" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap', textOverflow: 'ellipsis', fontFamily: 'Arial' }}>
+                  {row.criados}
+                </td>
+                <td className="text-status-not-started text-center py-1 px-1 font-bold" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap', textOverflow: 'ellipsis', fontFamily: 'Arial' }}>
+                  {row.naoIniciado}
+                </td>
+                <td className="text-status-in-progress text-center py-1 px-1 font-bold" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap', textOverflow: 'ellipsis', fontFamily: 'Arial' }}>
+                  {row.emDesenvolvimento}
+                </td>
+                <td className="text-status-approved text-center py-1 px-1 font-bold" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap', textOverflow: 'ellipsis', fontFamily: 'Arial' }}>
+                  {row.aprovado}
+                </td>
+                <td className="text-status-rejected text-center py-1 px-1 font-bold" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap', textOverflow: 'ellipsis', fontFamily: 'Arial' }}>
+                  {row.reprovado}
+                </td>
+                <td className="text-status-cancelled text-center py-1 px-1 font-bold" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap', textOverflow: 'ellipsis', fontFamily: 'Arial' }}>
+                  {row.cancelado}
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
