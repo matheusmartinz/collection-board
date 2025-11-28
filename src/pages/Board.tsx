@@ -714,14 +714,16 @@ const Board = () => {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-tv-background">
-      {/* Header fixo */}
-      <header 
-        className="bg-peon-dark-green px-8 py-6 flex items-center"
+    <div className="min-h-screen bg-tv-background">
+      {/* Header principal */}
+      <div
         style={{
-          position: 'sticky',
-          top: 0,
-          zIndex: 50
+          display: "flex",
+          alignItems: "center",
+          padding: "20px",
+          height: "10vh",
+          marginBottom: "5vh",
+          backgroundColor: "#263c2b"
         }}
       >
         <div className="flex items-center gap-6 w-full">
@@ -730,21 +732,25 @@ const Board = () => {
             Andamento das Coleções
           </h1>
         </div>
-      </header>
+      </div>
 
-      {/* WRAPPER CENTRAL */}
-      <div className="flex-1 flex justify-center py-6 px-8">
-        {/* CARD BRANCO COM SCROLL */}
+      {/* Wrapper branco ao redor da tabela */}
+      <div
+        style={{
+          display: "flex",
+          backgroundColor: "#FFFFFF",
+          width: "100%",
+          padding: "0px 20px 10px 20px",
+          flexGrow: 1
+        }}
+      >
+        {/* Área de scroll da tabela */}
         <div
           style={{
             height: "80vh",
             width: "100%",
             overflowY: "auto",
-            overflowX: "auto",
-            backgroundColor: "#FFFFFF",
-            padding: "20px",
-            borderRadius: "8px",
-            boxShadow: "0 2px 6px rgba(0,0,0,0.15)",
+            overflowX: "auto"
           }}
         >
           {/* Tabela estilo Dash */}
