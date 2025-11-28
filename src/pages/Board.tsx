@@ -298,25 +298,25 @@ const Board = () => {
                   {row.nome}
                 </td>
                 <td className="text-tv-text text-center py-1 px-1" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap', textOverflow: 'ellipsis', fontFamily: 'Arial' }}>
-                  {row.previsto}
+                  {row.previsto} (100%)
                 </td>
                 <td className="text-tv-text text-center py-1 px-1" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap', textOverflow: 'ellipsis', fontFamily: 'Arial' }}>
-                  {row.criados}
+                  {row.criados} ({((row.criados / row.previsto) * 100).toFixed(2)}%)
                 </td>
                 <td className="text-status-not-started text-center py-1 px-1 font-bold" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap', textOverflow: 'ellipsis', fontFamily: 'Arial' }}>
-                  {row.naoIniciado}
+                  {row.naoIniciado} ({((row.naoIniciado / row.previsto) * 100).toFixed(2)}%)
                 </td>
                 <td className="text-status-in-progress text-center py-1 px-1 font-bold" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap', textOverflow: 'ellipsis', fontFamily: 'Arial' }}>
-                  {row.emDesenvolvimento}
+                  {row.emDesenvolvimento} ({((row.emDesenvolvimento / row.previsto) * 100).toFixed(2)}%)
                 </td>
                 <td className="text-status-approved text-center py-1 px-1 font-bold" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap', textOverflow: 'ellipsis', fontFamily: 'Arial' }}>
-                  {row.aprovado}
+                  {row.aprovado} ({((row.aprovado / row.previsto) * 100).toFixed(2)}%)
                 </td>
                 <td className="text-status-rejected text-center py-1 px-1 font-bold" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap', textOverflow: 'ellipsis', fontFamily: 'Arial' }}>
-                  {row.reprovado}
+                  {row.reprovado} ({((row.reprovado / row.previsto) * 100).toFixed(2)}%)
                 </td>
                 <td className="text-status-cancelled text-center py-1 px-1 font-bold" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap', textOverflow: 'ellipsis', fontFamily: 'Arial' }}>
-                  {row.cancelado}
+                  {row.cancelado} ({((row.cancelado / row.previsto) * 100).toFixed(2)}%)
                 </td>
               </tr>
             ))}
