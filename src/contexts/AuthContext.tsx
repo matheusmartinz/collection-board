@@ -20,6 +20,14 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   const login = async (username: string, password: string) => {
+    // Credenciais de teste para desenvolvimento
+    if (username === 'admin' && password === 'admin') {
+      const testToken = 'test-token-admin-dev';
+      localStorage.setItem('auth_token', testToken);
+      setToken(testToken);
+      return { success: true };
+    }
+
     try {
       const response = await fetch('https://eboard.service.bck.peon.tec.br/auth/login', {
         method: 'POST',
