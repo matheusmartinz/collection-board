@@ -714,9 +714,9 @@ const Board = () => {
   }
 
   return (
-    <div className="min-h-screen bg-tv-background">
+    <div className="min-h-screen bg-tv-background flex flex-col">
       {/* Header fixo */}
-      <header className="bg-peon-dark-green px-8 py-6 flex items-center">
+      <header className="bg-peon-dark-green px-8 py-6 flex items-center flex-shrink-0">
         <div className="flex items-center gap-6 w-full">
           <div className="text-peon-white text-2xl font-bold">LOGO</div>
           <h1 className="text-peon-white text-4xl font-bold flex-1 text-center">
@@ -726,7 +726,7 @@ const Board = () => {
       </header>
 
       {/* Tabela estilo Dash */}
-      <div className="w-full" style={{ maxHeight: '1280px', overflowY: 'auto', overflowX: 'auto' }}>
+      <div className="w-full flex-1" style={{ height: 'calc(100vh - 120px)', overflowY: 'auto', overflowX: 'auto' }}>
         <table className="w-full border-collapse" style={{ fontFamily: 'Arial' }}>
           <thead style={{ position: 'sticky', top: 0, zIndex: 10 }}>
             <tr style={{ backgroundColor: '#263c2b' }}>
