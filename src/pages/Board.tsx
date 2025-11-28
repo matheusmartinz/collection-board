@@ -716,7 +716,7 @@ const Board = () => {
   return (
     <div className="min-h-screen bg-tv-background">
       {/* Header fixo */}
-      <header className="bg-peon-dark-green px-8 py-6 flex items-center">
+      <header className="bg-peon-dark-green px-8 py-6 flex items-center relative z-20">
         <div className="flex items-center gap-6 w-full">
           <div className="text-peon-white text-2xl font-bold">LOGO</div>
           <h1 className="text-peon-white text-4xl font-bold flex-1 text-center">
