@@ -726,9 +726,9 @@ const Board = () => {
       </header>
 
       {/* Tabela estilo Dash */}
-      <div className="w-full" style={{ maxHeight: '1280px', overflowY: 'auto', overflowX: 'auto', position: 'relative' }}>
+      <div className="w-full" style={{ maxHeight: '1280px', overflowY: 'auto', overflowX: 'auto' }}>
         <table className="w-full border-collapse" style={{ fontFamily: 'Arial' }}>
-          <thead className="sticky top-0 z-20">
+          <thead style={{ position: 'sticky', top: 0, zIndex: 10 }}>
             <tr style={{ backgroundColor: '#263c2b' }}>
               <th className="text-white font-bold text-center py-2 px-1 text-base" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap', backgroundColor: '#263c2b' }}>
                 Coleção
