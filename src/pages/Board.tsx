@@ -714,9 +714,16 @@ const Board = () => {
   }
 
   return (
-    <div className="min-h-screen bg-tv-background">
+    <div className="min-h-screen flex flex-col bg-tv-background">
       {/* Header fixo */}
-      <header className="bg-peon-dark-green px-8 py-6 flex items-center">
+      <header 
+        className="bg-peon-dark-green px-8 py-6 flex items-center"
+        style={{
+          position: 'sticky',
+          top: 0,
+          zIndex: 50
+        }}
+      >
         <div className="flex items-center gap-6 w-full">
           <div className="text-peon-white text-2xl font-bold">LOGO</div>
           <h1 className="text-peon-white text-4xl font-bold flex-1 text-center">
@@ -725,8 +732,9 @@ const Board = () => {
         </div>
       </header>
 
-      {/* TABLE WRAPPER – scroll somente aqui */}
+      {/* WRAPPER CENTRAL */}
       <div className="flex-1 flex justify-center py-6 px-8">
+        {/* CARD BRANCO COM SCROLL */}
         <div
           style={{
             height: "80vh",
