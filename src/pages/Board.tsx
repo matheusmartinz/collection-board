@@ -728,30 +728,30 @@ const Board = () => {
       {/* Tabela estilo Dash */}
       <div className="w-full" style={{ maxHeight: '1280px', overflowY: 'auto', overflowX: 'auto' }}>
         <table className="w-full border-collapse" style={{ fontFamily: 'Arial' }}>
-          <thead style={{ position: 'sticky', top: 0, zIndex: 10 }}>
-            <tr style={{ backgroundColor: '#263c2b' }}>
-              <th className="text-white font-bold text-center py-2 px-1 text-base" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap', backgroundColor: '#263c2b' }}>
+          <thead>
+            <tr>
+              <th className="text-white font-bold text-center py-2 px-1 text-base" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap', backgroundColor: '#263c2b', position: 'sticky', top: 0, zIndex: 10 }}>
                 Coleção
               </th>
-              <th className="text-white font-bold text-center py-2 px-1 text-base" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap', backgroundColor: '#263c2b' }}>
+              <th className="text-white font-bold text-center py-2 px-1 text-base" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap', backgroundColor: '#263c2b', position: 'sticky', top: 0, zIndex: 10 }}>
                 Previsto
               </th>
-              <th className="text-white font-bold text-center py-2 px-1 text-base" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap', backgroundColor: '#263c2b' }}>
+              <th className="text-white font-bold text-center py-2 px-1 text-base" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap', backgroundColor: '#263c2b', position: 'sticky', top: 0, zIndex: 10 }}>
                 Criados
               </th>
-              <th className="text-white font-bold text-center py-2 px-1 text-base" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap', backgroundColor: '#263c2b' }}>
+              <th className="text-white font-bold text-center py-2 px-1 text-base" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap', backgroundColor: '#263c2b', position: 'sticky', top: 0, zIndex: 10 }}>
                 Não iniciado
               </th>
-              <th className="text-white font-bold text-center py-2 px-1 text-base" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap', backgroundColor: '#263c2b' }}>
+              <th className="text-white font-bold text-center py-2 px-1 text-base" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap', backgroundColor: '#263c2b', position: 'sticky', top: 0, zIndex: 10 }}>
                 Em desenvolvimento
               </th>
-              <th className="text-white font-bold text-center py-2 px-1 text-base" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap', backgroundColor: '#263c2b' }}>
+              <th className="text-white font-bold text-center py-2 px-1 text-base" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap', backgroundColor: '#263c2b', position: 'sticky', top: 0, zIndex: 10 }}>
                 Aprovado
               </th>
-              <th className="text-white font-bold text-center py-2 px-1 text-base" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap', backgroundColor: '#263c2b' }}>
+              <th className="text-white font-bold text-center py-2 px-1 text-base" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap', backgroundColor: '#263c2b', position: 'sticky', top: 0, zIndex: 10 }}>
                 Reprovado
               </th>
-              <th className="text-white font-bold text-center py-2 px-1 text-base" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap', backgroundColor: '#263c2b' }}>
+              <th className="text-white font-bold text-center py-2 px-1 text-base" style={{ border: '1px solid #ccc', whiteSpace: 'nowrap', backgroundColor: '#263c2b', position: 'sticky', top: 0, zIndex: 10 }}>
                 Cancelado
               </th>
             </tr>
