@@ -9,4 +9,5 @@ export const globalStyles = {
   PEON_BLUE: "#5a87b0c2",
   PEON_LARANJA_CLARO: "#DDA15E",
   PEON_LARANJA_ESCURO: "#BC6C25",
+  PEON_DARK_BLUE: "#0f172a",
 };
