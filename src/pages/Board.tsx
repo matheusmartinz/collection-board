@@ -1,138 +1,13 @@
-import { useEffect, useState } from "react";
 import { Loader2 } from "lucide-react";
 import { globalStyles } from "../global/styles";
-import { MOCK_DATA } from "./DadosMockados";
+import { useGestaoModelo } from "../hooks/useGestaoModelo";
 
-interface Colecao {
-  uuid: string;
-  codigo: string;
-  nome: string;
-}
-
-interface Modelo {
-  codigo: string;
-  nome: string;
-  status: "NAO_INICIADO" | "EM_DESENVOLVIMENTO" | "APROVADO" | "REPROVADO" | "CANCELADO";
-}
-
-interface ColecaoData {
-  colecao: Colecao;
-  numeroModelos: number;
-  modelos: Modelo[];
-}
-
-interface ResumoColecao {
-  nome: string;
-  previsto: number;
-  criados: number;
-  naoIniciado: number;
-  emDesenvolvimento: number;
-  aprovado: number;
-  reprovado: number;
-  cancelado: number;
-}
-
-const API_URL = "https://eboard.service.bck.peon.tec.br/api/gestao-modelo";
-const logoEliteBoard = "/iconeTopoElite.svg";
-const REFRESH_INTERVAL = 60000;
-const USE_MOCK_DATA = true; // Altere para false quando quiser usar a API real
-
-const initialState = {
-  loading: true,
-  data: [] as Array<ResumoColecao>,
-  error: null as string | null,
-};
+const logoEliteBoard = "/logo_eliteBoard.svg";
 
 const Board = () => {
-  // const [data, setData] = useState<ResumoColecao[]>([]);
-  // const [loading, setLoading] = useState(true);
-  // const [error, setError] = useState<string | null>(null);
-  const [stateLocal, setStateLocal] = useState(initialState);
+  const { data, loading, error } = useGestaoModelo();
 
-  const [lastUpdate, setLastUpdate] = useState<Date | null>(null);
-
-  const fetchData = async () => {
-    try {
-      setStateLocal((prev) => ({
-        ...prev,
-        error: null,
-      }));
-
-      let apiData: ColecaoData[];
-
-      if (USE_MOCK_DATA) {
-        await new Promise((resolve) => setTimeout(resolve, 500));
-        apiData = MOCK_DATA;
-      } else {
-        const response = await fetch(API_URL);
-
-        if (!response.ok) {
-          throw new Error(`Erro na API: ${response.status}`);
-        }
-
-        apiData = await response.json();
-      }
-
-      const resumo: ResumoColecao[] = apiData.map((item) => {
-        const statusCounts = {
-          naoIniciado: 0,
-          emDesenvolvimento: 0,
-          aprovado: 0,
-          reprovado: 0,
-          cancelado: 0,
-        };
-
-        item.modelos.forEach((modelo) => {
-          switch (modelo.status) {
-            case "NAO_INICIADO":
-              statusCounts.naoIniciado++;
-              break;
-            case "EM_DESENVOLVIMENTO":
-              statusCounts.emDesenvolvimento++;
-              break;
-            case "APROVADO":
-              statusCounts.aprovado++;
-              break;
-            case "REPROVADO":
-              statusCounts.reprovado++;
-              break;
-            case "CANCELADO":
-              statusCounts.cancelado++;
-              break;
-          }
-        });
-
-        return {
-          nome: item.colecao.nome + " - " + item.colecao.codigo,
-          previsto: item.numeroModelos,
-          criados: item.modelos.length,
-          ...statusCounts,
-        };
-      });
-      // setLastUpdate(new Date());
-      setStateLocal((prev) => ({
-        ...prev,
-        data: resumo,
-        loading: false,
-      }));
-    } catch (err) {
-      setStateLocal((prev) => ({
-        ...prev,
-        error: err instanceof Error ? err.message : "Erro ao carregar dados",
-        loading: false,
-      }));
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-
-    const interval = setInterval(fetchData, REFRESH_INTERVAL);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  if (stateLocal.loading) {
+  if (loading) {
     return (
       <div className="min-h-screen bg-tv-background flex items-center justify-center">
         <div className="text-center">
@@ -143,12 +18,12 @@ const Board = () => {
     );
   }
 
-  if (stateLocal.error) {
+  if (error) {
     return (
       <div className="min-h-screen bg-tv-background flex items-center justify-center">
         <div className="text-center">
           <p className="text-status-rejected text-3xl font-semibold mb-4">Erro ao carregar dados</p>
-          <p className="text-tv-text-muted text-2xl">{stateLocal.error}</p>
+          <p className="text-tv-text-muted text-2xl">{error}</p>
         </div>
       </div>
     );
@@ -158,12 +33,12 @@ const Board = () => {
     th: {
       border: `1px solid ${globalStyles.CINZA_MEDIO}`,
       whiteSpace: "nowrap",
-      backgroundColor: globalStyles.peonDarkGreen,
-      color: "white",
+      backgroundColor: globalStyles.peonWhite,
+      color: globalStyles.PEON_DARK_BLUE,
       fontWeight: "700",
       fontSize: "22px",
       padding: "12px 8px",
-      textAlign: "center",
+      textAlign: "center" as const,
     },
     td: {
       border: `1px solid ${globalStyles.CINZA_MEDIO}`,
@@ -171,7 +46,8 @@ const Board = () => {
       fontFamily: "Arial",
       fontSize: "20px",
       padding: "12px 8px",
-      textAlign: "center",
+      textAlign: "center" as const,
+      color: globalStyles.PEON_DARK_BLUE,
     },
     percentage: {
       fontSize: "20px",
@@ -196,10 +72,15 @@ const Board = () => {
         }}
       >
         <div className="flex items-center gap-6 w-full">
-          {/* <div className="text-peon-white text-2xl font-bold">LOGO</div> */}
-          <div>
-            <img src={logoEliteBoard} alt="logoEliteBoard" style={{ height: "35px" }} />
-          </div>
+          <img
+            src={logoEliteBoard}
+            alt="logoEliteBoard"
+            style={{
+              height: "50px",
+              filter:
+                "brightness(0) saturate(100%) invert(98%) sepia(1%) saturate(265%) hue-rotate(169deg) brightness(103%) contrast(97%)",
+            }}
+          />
           <h1
             className="text-4xl font-bold flex-1 text-center"
             style={{ color: globalStyles.peonWhite }}
@@ -241,7 +122,7 @@ const Board = () => {
             </thead>
 
             <tbody style={{ backgroundColor: globalStyles.peonWhite }}>
-              {stateLocal.data.map((row) => (
+              {data.map((row) => (
                 <tr key={row.nome}>
                   <td style={{ ...tvStyles.td, textAlign: "left", padding: "12px 12px" }}>
                     {row.nome}
@@ -263,12 +144,7 @@ const Board = () => {
                     </div>
                   </td>
 
-                  <td
-                    style={{
-                      ...tvStyles.td,
-                      width: "140px",
-                    }}
-                  >
+                  <td style={{ ...tvStyles.td, width: "140px" }}>
                     <div style={tvStyles.cellCol}>
                       <span>{row.naoIniciado}</span>
                       <span style={tvStyles.percentage}>
@@ -301,13 +177,7 @@ const Board = () => {
                     </div>
                   </td>
 
-                  <td
-                    style={{
-                      ...tvStyles.td,
-                      width: "120px",
-                      color: globalStyles.RED,
-                    }}
-                  >
+                  <td style={{ ...tvStyles.td, width: "120px", color: globalStyles.RED }}>
                     <div style={tvStyles.cellCol}>
                       <span>{row.reprovado}</span>
                       <span style={tvStyles.percentage}>
@@ -328,15 +198,6 @@ const Board = () => {
               ))}
             </tbody>
           </table>
-
-          {/* Última atualização
-          {lastUpdate && (
-            <div className="text-center py-4">
-              <p className="text-tv-text-muted text-sm">
-                Última atualização: {lastUpdate.toLocaleTimeString("pt-BR")}
-              </p>
-            </div>
-          )} */}
         </div>
       </div>
     </div>
